@@ -1,1 +1,16 @@
-<p>employee-details works!</p>
+<h2> EMPLOYEE DETAILS </h2>
+
+<div *ngIf="loading">Loading Employee Details...</div>
+<div *ngIf="error"> {{ error }} </div>
+
+
+<div *ngIf="employee">
+
+    <p><strong>First Name : </strong> {{ employee.first_name }} </p>
+    <p><strong>Last Name: </strong> {{ employee.last_name }} </p>
+    <p><strong>Email: </strong> {{ employee.email }} </p>
+    <p><strong>Designation: </strong> {{ employee.designation }} </p>
+    <p><strong>Department: </strong> {{ employee.department }} </p>
+    <p><strong>Salary: </strong> {{ employee.salary }}</p>
+    
+</div>
