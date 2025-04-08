@@ -43,6 +43,7 @@ export class EmployeeListComponent {
     this.apollo.watchQuery<any>({
 
       query: GET_ALL_EMPLOYEES
+      
     }).valueChanges.subscribe({
 
       next: (result) => {
