@@ -74,7 +74,7 @@ const graphqlSchema = buildSchema(`
             date_of_joining: String,
             department: String,
             employee_photo: String    
-               
+
         ): Employee
         deleteEmployeeByEid(eid: ID!): String
     }
@@ -192,7 +192,7 @@ const queryHandlers = {
             gender,
             designation,
             salary,
-            date_of_joining,
+            date_of_joining: date_of_joining || new Date().toISOString(),
             department,
             employee_photo
     });

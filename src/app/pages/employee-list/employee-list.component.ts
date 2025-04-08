@@ -46,7 +46,7 @@ export class EmployeeListComponent {
     gender: '',
     designation: '',
     salary: 0,
-    date_of_joining: '',
+    date_of_joining: new Date().toISOString().slice(0, 10),
     department: '',
     employee_photo: ''
 
@@ -103,7 +103,7 @@ export class EmployeeListComponent {
       gender: '',
       designation: '',
       salary: 0,
-      date_of_joining: '',
+      date_of_joining: new Date().toISOString().slice(0, 10),
       department: '',
       employee_photo: ''
       
