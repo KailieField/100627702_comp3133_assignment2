@@ -1,6 +1,6 @@
 # FULL STACK DEV II | ASSIGNMENT 02
 
-## ----------------------------[ PROJECT OVERVIEW ]------------------------
+## --------------------------[ PROJECT OVERVIEW ]----------------------
 ## Assignment 02 is a Full-Stack Employee Management System that expands upon the backend of Assignment 01 and focuses on frontend development.
 # -------------------[ TECHNOLOGIES ]-------------------
 ## ° **Frontend:** Angular 19.2.5
