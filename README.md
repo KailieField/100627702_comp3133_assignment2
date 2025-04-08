@@ -2,7 +2,7 @@
 
 ## ----------------------------[ PROJECT OVERVIEW ]------------------------
 ## Assignment 02 is a Full-Stack Employee Management System that expands upon the backend of Assignment 01 and focuses on frontend development.
-# ----------------------------[ TECHNOLOGIES ]----------------------------
+# -------------------[ TECHNOLOGIES ]-------------------
 ## ° **Frontend:** Angular 19.2.5
 ## ° **Backend:** GraphQL APIs (handled separately)
 ## ° **Deployment:** Vercel
