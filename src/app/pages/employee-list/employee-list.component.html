@@ -1,5 +1,25 @@
 <h2> EMPLOYEE LIST </h2>
 
+
+<!-- [ ADD EMPLOYEE ] -->
+ <br>
+ <h1> Add New Employee </h1>
+
+ <form (ngSubmit)="addEmployee()" #addEmployeeForm="ngForm">
+    <input type="text" placeholder="First Name" [(ngModel)]="newEmployee.first_name" name="first_name" required>
+    <br>
+    <input type="text" placedholder="Last Name" [(ngModel)]="newEmployee.last_name" name="last_name" required>
+    <br>
+    <input type="email" placeholder="Email" [(ngModel)]="newEmployee.email" name="email" required>
+    <br><br>
+    <input type="text" placeholder="Designation" [(ngModel)]="newEmployee.designation" name="designation" required>
+    <br>
+    <input type="number" placeholder="Salary" [(ngModel)]="newEmployee.salary" name="salary" required>
+    <br><br>
+    <button type="submit">+</button>
+ </form>
+
+<br><br><br>
 <div *ngIf="loading">Loading Employee List...</div>
 <div *ngIf="error"> {{ error }} </div>
 
@@ -10,6 +30,7 @@
             <th>Last Name</th>
             <th>Designation</th>
             <th>Department</th>
+            <th>Salary</th>
         </tr>
     </thead>
 </table>

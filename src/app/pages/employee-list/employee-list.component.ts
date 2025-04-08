@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-// import { AuthService } from '../../services/auth.service';
-// import { gql, Apollo } from 'apollo-angular';
+import { AuthService } from '../../services/auth.service';
+import { gql, Apollo } from 'apollo-angular';
 
 import { EmployeeService } from '../../services/employee.service';
 
@@ -104,6 +104,8 @@ export class EmployeeListComponent {
 }
 
 
+
+// ------------------------------------------------------ [ DEPRECATED CODE ]------------------------------------------------------
 // export class EmployeeListComponent {
 
 //   employees: any[] = [];
