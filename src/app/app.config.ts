@@ -3,19 +3,20 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
-// import { provideApolloClient } from '@apollo/angular'; //<--- not needed for Angular v19, will have to consider Reactive Components in .ts'
-import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+import { provideApollo} from 'apollo-angular'; //<--- not needed for Angular v19, will have to consider Reactive Components in .ts'
+import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { routes } from './app.routes';
 
 
 //------------[ APOLLO CLIENT ]------------ **** Mental Note: may have to change localhost
 
-const apolloClient = new ApolloClient({
+const apolloClientOptions: ApolloClientOptions<any> = {
 
-  uri: 'http://localhost:8081/graphql',
   cache: new InMemoryCache(),
+  uri: 'http://localhost:8081/graphql',
 
-});
+};
+
 export const appConfig: ApplicationConfig = {
 
   providers: [
@@ -24,7 +25,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     provideAnimations(),
-    // provideApolloClient(apolloClient) //<---*** mental note
+    provideApollo(() => apolloClientOptions), //<---*** mental note
 
   ]
 
