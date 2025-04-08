@@ -1,1 +1,19 @@
-<p>employee-list works!</p>
+<h2> EMPLOYEE LIST </h2>
+
+<div *ngIf="loading">Loading Employee List...</div>
+<div *ngIf="error"> {{ error }} </div>
+
+<table *ngIf="!loading && employees.length > 0" border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Designation</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+</table>
+
+<!-- 
+--- Currently Hardcoding Employees
+------ consider dynamically populating employees from into table from employee-list.component.ts-->
