@@ -10,7 +10,7 @@
 ## °° Node.js 23.7.0 (not being shipped to production), 
 ## °° Angular CLI 19.2.6
 
-## -------------------------------[ DIRECTIVE ]--------------------------------
+## -----------------------------[ DIRECTIVE ]------------------------------
 ### As a Junior Software Engineer, you’ve been tasked with developing a frontend application using Angular. Your goal is to research and implement data fetching via GraphQL within the Angular project. You can leverage the knowledge you gained in the COMP 3133 course at George Brown College.
 
 ### The project will be maintained in a Git repository named studentID_comp3133_assignment2. If you choose to make the repository private, please add me as a collaborator (username: pritamworld).
