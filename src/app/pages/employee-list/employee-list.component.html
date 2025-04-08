@@ -3,7 +3,7 @@
 <div *ngIf="loading">Loading Employee List...</div>
 <div *ngIf="error"> {{ error }} </div>
 
-<table *ngIf="!loading && employees.length > 0" border="1" cellpadding="5">
+<table *ngIf="!loading && employees.length > 0" border="1" cellpadding="5"> <!-- *** mental note: boarder == red flag ???-->
     <thead>
         <tr>
             <th>First Name</th>
