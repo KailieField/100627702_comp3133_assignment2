@@ -1,0 +1,20 @@
+
+.employee-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.employee-table th {
+
+    background-color: #444;
+    padding: 10px;
+    border: 1px solid #666;
+    color: white;
+}
+
+.employee-table td {
+    padding: 8px;
+    border: 1px solid #666;
+}
