@@ -42,9 +42,13 @@ export class EmployeeListComponent {
     first_name: '',
     last_name: '',
     email: '',
+    gender: '',
     designation: '',
+    salary: 0,
+    date_of_joining: '',
     department: '',
-    salary: 0
+    employee_photo: ''
+
 
   };
 
@@ -95,10 +99,13 @@ export class EmployeeListComponent {
       first_name: '',
       last_name: '',
       email: '',
+      gender: '',
       designation: '',
+      salary: 0,
+      date_of_joining: '',
       department: '',
-      salary: 0
-
+      employee_photo: ''
+      
     };
   }
 }

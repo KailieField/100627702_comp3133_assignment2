@@ -11,10 +11,18 @@
     <input type="text" placedholder="Last Name" [(ngModel)]="newEmployee.last_name" name="last_name" required>
     <br>
     <input type="email" placeholder="Email" [(ngModel)]="newEmployee.email" name="email" required>
+    <br>
+    <input type="text" placeholder="Gender" [(ngModel)]="newEmployee.gender" name="gender">
     <br><br>
     <input type="text" placeholder="Designation" [(ngModel)]="newEmployee.designation" name="designation" required>
     <br>
+    <input type="text" placeholder="Department" [(ngModel)]="newEmployee.department" name="department" requried>
+    <br>
     <input type="number" placeholder="Salary" [(ngModel)]="newEmployee.salary" name="salary" required>
+    <br>
+    <input type="text" placeholder="Date of Joining" [(ngModel)]="newEmployee.date_of_joining" name="date_of_joining" required>
+    <br>
+    <input type="text" placeholder="Employee Photo URL" [(ngModel)]="newEmployee.employee_photo" name="employee_photo">
     <br><br>
     <button type="submit">+</button>
  </form>

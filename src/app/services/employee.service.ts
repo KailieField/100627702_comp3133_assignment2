@@ -40,6 +40,7 @@ export class EmployeeService {
                         first_name
                         last_name
                         email
+                        gender
                         designation
                         department
                         salary
@@ -56,21 +57,29 @@ export class EmployeeService {
             mutation: gql`
                 mutation AddEmployee(
 
-                    $first_name: String!
-                    $last_name: String!
-                    $email: String!
-                    $designation: String!
-                    $department: String!
+                    $first_name: String!,
+                    $last_name: String!,
+                    $email: String,
+                    $gender: Stirng,
+                    $designation: String!,
                     $salary: Float!
+                    $date_of_joining: String!,
+                    $department: String!,
+                    $employee_photo: String
+                    
                     
                 ) {
                     addEmployee(
-                        first_name: $first_name
-                        last_name: $last_name
-                        email: $email
-                        designation: $designation
-                        department: $department
-                        salary: $salary
+                        first_name: $first_name,
+                        last_name: $last_name,
+                        email: $email,
+                        gender: $gender,
+                        designation: $designation,
+                        salary: $salary,
+                        date_of_joining: $date_of_joining,
+                        department: $department,
+                        employee_photo: $employee_photo
+                        
                     ) {
                         _id    
                     }    
