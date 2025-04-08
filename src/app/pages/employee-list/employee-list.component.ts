@@ -8,7 +8,7 @@ import { gql, Apollo } from 'apollo-angular';
 
 const GET_ALL_EMPLOYEES = gql`
 
-  getAllEmployees {
+  query {
 
     _id
     first_name
