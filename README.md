@@ -3,10 +3,10 @@
 ## ----------------------------[ PROJECT OVERVIEW ]------------------------
 ## Assignment 02 is a Full-Stack Employee Management System that expands upon the backend of Assignment 01 and focuses on frontend development.
 # ----------[ TECHNOLOGIES USED ]:
-## ----------------------- **Frontend:** Angular 19.2.5
-## ----------------------- **Backend:** GraphQL APIs (handled separately)
-## ----------------------- **Deployment:** Vercel
-## ----------------------- **Build Tools:** Node.js 23.7.0 (no being shipped to production), Angular CLI 19.2.6
+## ------ **Frontend:** Angular 19.2.5
+## ------ **Backend:** GraphQL APIs (handled separately)
+## ------ **Deployment:** Vercel
+## ------ **Build Tools:** Node.js 23.7.0 (no being shipped to production), Angular CLI 19.2.6
 
 ## -------------------------------[ DIRECTIVE ]--------------------------------
 ### As a Junior Software Engineer, you’ve been tasked with developing a frontend application using Angular. Your goal is to research and implement data fetching via GraphQL within the Angular project. You can leverage the knowledge you gained in the COMP 3133 course at George Brown College.
