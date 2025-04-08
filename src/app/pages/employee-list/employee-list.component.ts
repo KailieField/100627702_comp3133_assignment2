@@ -8,18 +8,19 @@ import { EmployeeService } from '../../services/employee.service';
 
 
 
-// const GET_ALL_EMPLOYEES = gql`
+const GET_ALL_EMPLOYEES = gql`
 
-//   query {
-
-//     _id
-//     first_name
-//     last_name
-//     designation
-//     department
-
-//   }
-// `;
+  query {
+    getAllEmployees {
+      _id
+      first_name
+      last_name
+      designation
+      department
+      salary
+    }
+  }
+`;
 
 @Component({
 
@@ -80,8 +81,8 @@ export class EmployeeListComponent {
 
       next: (result) => {
         console.log('[ EMPLOYEE ADDED]', result);
-        this.ngOnInit();
-        this.resetForm();
+        this.ngOnInit(); //<--- this is supposed to re-fetch the employee list but something is misfiring
+        this.resetForm(); //<--- Clear form inputs
       },
 
       error: (error) => {

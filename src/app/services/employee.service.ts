@@ -35,7 +35,7 @@ export class EmployeeService {
         return this.apollo.watchQuery({
 
             query: gql`
-                query(@eid: ID!) {
+                query SearchEmployee($eid: ID!) {
                     searchAllEmployeesByEid(eid: $eid) {
                         first_name
                         last_name
@@ -60,9 +60,9 @@ export class EmployeeService {
                     $first_name: String!,
                     $last_name: String!,
                     $email: String,
-                    $gender: Stirng,
+                    $gender: String,
                     $designation: String!,
-                    $salary: Float!
+                    $salary: Float!,
                     $date_of_joining: String!,
                     $department: String!,
                     $employee_photo: String

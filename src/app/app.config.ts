@@ -12,8 +12,8 @@ import { routes } from './app.routes';
 
 const apolloClientOptions: ApolloClientOptions<any> = {
 
-  cache: new InMemoryCache(),
   uri: 'http://localhost:8081/graphql',
+  cache: new InMemoryCache(),
 
 };
 

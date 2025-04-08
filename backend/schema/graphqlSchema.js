@@ -28,7 +28,7 @@ const graphqlSchema = buildSchema(`
         gender: String
         designation: String!
         salary: Float!
-        date_of_joinig: String!
+        date_of_joining: String!
         department: String!
         employee_photo: String
         created_at: String
@@ -49,6 +49,7 @@ const graphqlSchema = buildSchema(`
 
         signup(username: String!, email: String!, password: String!): User
         addEmployee(
+
             first_name: String!,
             last_name: String!,
             email: String,
@@ -58,8 +59,11 @@ const graphqlSchema = buildSchema(`
             date_of_joining: String!,
             department: String!,
             employee_photo: String
+
         ): Employee
+
         updateEmployeeByEid(
+
             eid: ID!,
             first_name: String,
             last_name: String,
@@ -69,7 +73,8 @@ const graphqlSchema = buildSchema(`
             salary: Float,
             date_of_joining: String,
             department: String,
-            employee_photo: String       
+            employee_photo: String    
+               
         ): Employee
         deleteEmployeeByEid(eid: ID!): String
     }
