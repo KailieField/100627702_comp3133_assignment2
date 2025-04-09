@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
+import { Observable } from 'rxjs';
 
 @Injectable({
 
@@ -12,44 +13,41 @@ export class AuthService {
 
   constructor( private apollo: Apollo ) { }
 
-    authenticateUser(username: string, password: string){
+    authenticateUser(username: string, password: string): Observable<any> {
+      return this.apollo.query({
 
-      const LOGIN_QUERY = gql`
+        query: gql`
 
-        query Login($username: String!, $password: String!) {
+          query Login($username: String!, $password: String!) {
           login(username: $username, password: $password)
 
-      }
-      `;
+        }
+      `,
+      variables: {
+        username,
+        password
+      },
+      fetchPolicy: 'no-cache'
+    });
+  }
 
-      return this.apollo.query<any>({
+  registerUser(username: string, email: string, password: string): Observable<any> {
+    return this.apollo.mutate({
 
-        query: LOGIN_QUERY,
-        variables: { username, password }
-
-      });
-
-    }
-
-    registerUser(username: string, email: string, password: string){
-
-      const SIGNUP_MUTATION = gql`
-
-        mutation Signup($username: String!, $password: String!){
+      mutation: gql`
+          mutation Signup($username: String!, $email: String!, $password: String!){
           signup(username: $username, email: $email, password: $password){
             _id
             username
             email
           }
         }
-      `;
-
-      return this.apollo.mutate<any>({
-
-        mutation: SIGNUP_MUTATION,
-        variables: { username, email, password }
-
-      });
-
-    }
+      `,
+      variables: {
+        username,
+        email,
+        password
+      }
+    });
+  }
 }

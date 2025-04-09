@@ -105,7 +105,9 @@ const queryHandlers = {
         return jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' })
     },
 
-    signup: async ({ username, email, password }) => {
+    signup: async (args) => {
+
+        const { username, email, password } = args;
 
         if (!username || username.trim().length < 4){
             throw new Error("USERNAME MUST BE 4 CHARS IN LENGTH.")
@@ -119,7 +121,7 @@ const queryHandlers = {
             throw new Error("PASSWORD MUST BE > 6 CHARS.")
         }
 
-        const userExists = await User.findOne({ Sor: [{ username }, { email }] })
+        const userExists = await User.findOne({ $or: [{ username }, { email }] })
         if(userExists) {
             throw new Error("USER ALREADY EXISTS.")
         }

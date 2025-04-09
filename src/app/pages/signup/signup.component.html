@@ -1,14 +1,16 @@
 <h2> SIGN UP PAGE </h2>
 
-<form (ngSubmit)="registerUser()">
-    <label>Username: </label>
+<form (ngSubmit)="registerUser()" #signupForm="ngForm">
+
     <input type="text" [(ngModel)]="username" name="username" required>
+    <br>
 
-    <label>Email: </label>
     <input type="email" [(ngModel)]="email" name="email" required>
+    <br>
 
-    <label>Password: </label>
     <input type="password" [(ngModel)]="password" name="password" required>
+    <br>
 
     <button type="submit">Signup</button>
+    
 </form>
