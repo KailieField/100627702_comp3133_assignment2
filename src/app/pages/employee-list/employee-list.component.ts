@@ -1,26 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../services/auth.service';
-import { gql, Apollo } from 'apollo-angular';
 
 import { EmployeeService } from '../../services/employee.service';
-
-
-
-const GET_ALL_EMPLOYEES = gql`
-
-  query {
-    getAllEmployees {
-      _id
-      first_name
-      last_name
-      designation
-      department
-      salary
-    }
-  }
-`;
 
 @Component({
 
@@ -123,6 +105,11 @@ export class EmployeeListComponent {
 
 
 // ------------------------------------------------------ [ DEPRECATED CODE ]------------------------------------------------------
+
+// import { AuthService } from '../../services/auth.service';
+// import { gql, Apollo } from 'apollo-angular';
+
+
 // export class EmployeeListComponent {
 
 //   employees: any[] = [];
@@ -157,3 +144,19 @@ export class EmployeeListComponent {
 //   }
 
 // }
+
+
+
+// const GET_ALL_EMPLOYEES = gql`
+
+//   query {
+//     getAllEmployees {
+//       _id
+//       first_name
+//       last_name
+//       designation
+//       department
+//       salary
+//     }
+//   }
+// `;
