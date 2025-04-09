@@ -87,6 +87,23 @@ export class EmployeeListComponent {
     });
   }
 
+  resetForm() {
+
+    this.newEmployee = {
+
+      first_name: '',
+      last_name: '',
+      email: '',
+      gender: '',
+      designation: '',
+      salary: 0,
+      date_of_joining: new Date().toISOString().slice(0, 10),
+      department: '',
+      employee_photo: ''
+      
+    };
+  }
+
   deleteEmployee(id: string) {
     if(!confirm('Delete Employee?')){
       return;
@@ -107,15 +124,40 @@ export class EmployeeListComponent {
     });
   }
 
+  editEmployee(employee: any) {
+
+    this.editingEmployee = employee;
+    this.editForm = { 
+      first_name: employee.first_name,
+      last_name: employee.last_name,
+      email: employee.email || '',
+      gender: employee.gender || '',
+      designation: employee.designation,
+      salary: employee.salary,
+      date_of_joining: employee.date_of_joining || new Date().toISOString().slice(0, 10),
+      department: employee.department,
+      employee_photo: employee.employee_photo || ''
+      
+    };
+
+  }
+
   updateEmployee() {
+
+    if (!this.editingEmployee) {
+      console.error('Employee not selected...');
+      return;
+    }
 
     this.employeeService.updateEmployee(this.editingEmployee._id, this.editForm).subscribe({
 
       next: (result) => {
 
         console.log('[EMPLOYEE UPDATED]', result);
+
         this.ngOnInit();
         this.editingEmployee = null;
+        this.editForm = { };
         alert('Employee Updated ✔');
       },
 
@@ -128,27 +170,12 @@ export class EmployeeListComponent {
     });
   }
 
+
   cancelEdit(){
 
     this.editingEmployee = null;
   }
 
-  resetForm() {
-
-    this.newEmployee = {
-
-      first_name: '',
-      last_name: '',
-      email: '',
-      gender: '',
-      designation: '',
-      salary: 0,
-      date_of_joining: new Date().toISOString().slice(0, 10),
-      department: '',
-      employee_photo: ''
-      
-    };
-  }
 }
 
 

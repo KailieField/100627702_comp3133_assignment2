@@ -45,11 +45,27 @@
             <td>{{ employee.last_name }}</td>
             <td>{{ employee.designation }}</td>
             <td>{{ employee.department }}</td>
-                <button (click)="updateEmployee(employee._id)">Edit</button>
-                <button (click)="deleteEmployee(employee._id)">Delete</button>
+            <td>
+                <button type="button" (click)="editEmployee(employee)">Edit</button>
+                <button type="button" (click)="deleteEmployee(employee._id)">Delete</button>
+            </td>
         </tr>
     </tbody>
 </table>
+
+<div *ngIf="editingEmployee">
+    <h3>Edit Employee</h3>
+    <form (ngSubmit)="updateEmployee()">
+        <input type="text" [(ngModel)]="editForm.first_name" name="edit_first_name" [ngModelOptions]="{ standalone: true }" required>
+        <input type="text" [(ngModel)]="editForm.last_name" name="edit_last_name" [ngModelOptions]="{ standalone: true }" required>
+        <input type="text" [(ngModel)]="editForm.designation" name="edit_designation" [ngModelOptions]="{ standalone: true }" required>
+        <input type="text" [(ngModel)]="editForm.department" name="edit_department" [ngModelOptions]="{ standalone: true }" required>
+        <input type="number" [(ngModel)]="editForm.salary" name="edit_salary" [ngModelOptions]="{ standalone: true }" required>
+        <br><br>
+        <button type="submit">Save Changes</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+</div>
 
 <!-- 
 --- Currently Hardcoding Employees

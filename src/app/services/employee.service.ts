@@ -70,6 +70,7 @@ export class EmployeeService {
                     
                 ) {
                     addEmployee(
+                    
                         first_name: $first_name,
                         last_name: $last_name,
                         email: $email,
@@ -101,22 +102,23 @@ export class EmployeeService {
         });
     }
 
-    updateEmployee(id: string, updates: any): Observable<any> {
+    updateEmployee(id: string, employeeData: any): Observable<any> {
 
         return this.apollo.mutate({
             mutation: gql`
                 mutation UpdateEmployee(
 
                     $eid: ID!,
-                    $first_name: String!,
-                    $last_name: String!,
+                    $first_name: String,
+                    $last_name: String,
                     $email: String,
                     $gender: String,
-                    $designation: String!,
-                    $salary: Float!,
-                    $date_of_joining: String!,
-                    $department: String!,
-                    $employee_photo: String                    
+                    $designation: String,
+                    $salary: Float,
+                    $date_of_joining: String,
+                    $department: String,
+                    $employee_photo: String       
+
                 ) {
                 updateEmployeeByEid(     
                     eid: $eid,
@@ -134,7 +136,7 @@ export class EmployeeService {
                 }                        
             }
         `,
-        variables: { eid: id, ...updates }
+        variables: { eid: id, ...employeeData }
         });
    }
 }
