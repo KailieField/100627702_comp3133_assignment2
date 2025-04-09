@@ -76,6 +76,13 @@ export class EmployeeListComponent {
   }
 
   addEmployee() {
+
+    if(!this.newEmployee.salary || this.newEmployee.salary < 1000) {
+
+      alert('Salary must be greater than 1000...\n Kinda seems like a robbery to not...');
+      return;
+
+    }
     
     this.employeeService.addEmployee(this.newEmployee).subscribe({
 
@@ -83,11 +90,13 @@ export class EmployeeListComponent {
         console.log('[ EMPLOYEE ADDED]', result);
         this.ngOnInit(); //<--- this is supposed to re-fetch the employee list but something is misfiring
         this.resetForm(); //<--- Clear form inputs
+        alert('EMPLOYEE ADDED ✔');
       },
 
       error: (error) => {
 
         console.error('[ERROR: ]', error.message);
+        alert('Error: ' +  error.message);
 
       }
     });
