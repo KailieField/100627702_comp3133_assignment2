@@ -84,6 +84,26 @@ export class EmployeeListComponent {
     });
   }
 
+  deleteEmployee(id: string) {
+    if(!confirm('Delete Employee?')){
+      return;
+    }
+
+    this.employeeService.deleteEmployee(id).subscribe({
+      next: (result) => {
+        console.log('[EMPLOYEE DELETED]', result);
+        this.ngOnInit();
+        alert('Employee Added ✔');
+      },
+
+      error: (error) => {
+
+        console.error('[ERROR DELETING EMPLOYEE]', error.message);
+        alert('Error: ' + error.message);
+      }
+    });
+  }
+
   resetForm() {
 
     this.newEmployee = {

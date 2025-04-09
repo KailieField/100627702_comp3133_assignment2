@@ -87,4 +87,17 @@ export class EmployeeService {
             `, variables: employee
         });
     }
+
+    deleteEmployee(id: string): Observable<any> {
+
+        return this.apollo.mutate({
+
+            mutation: gql`
+                mutation DeleteEmployee($eid: ID!) {
+                    deleteEmployeeByEid(eid: $eid)
+                }
+            `,
+            variables: { eid: id }
+        });
+    }
 }
