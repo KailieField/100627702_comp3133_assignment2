@@ -45,6 +45,7 @@
             <td>{{ employee.last_name }}</td>
             <td>{{ employee.designation }}</td>
             <td>{{ employee.department }}</td>
+                <button (click)="updateEmployee(employee._id)">Edit</button>
                 <button (click)="deleteEmployee(employee._id)">Delete</button>
         </tr>
     </tbody>

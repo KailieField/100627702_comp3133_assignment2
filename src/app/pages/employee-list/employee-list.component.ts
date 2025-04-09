@@ -35,6 +35,9 @@ export class EmployeeListComponent {
 
   };
 
+  editingEmployee: any = null;
+  editForm: any = { };
+
   constructor( private employeeService: EmployeeService ) { }
 
   ngOnInit() {
@@ -93,7 +96,7 @@ export class EmployeeListComponent {
       next: (result) => {
         console.log('[EMPLOYEE DELETED]', result);
         this.ngOnInit();
-        alert('Employee Added ✔');
+        alert('Employee DELETED ✔');
       },
 
       error: (error) => {
@@ -102,6 +105,32 @@ export class EmployeeListComponent {
         alert('Error: ' + error.message);
       }
     });
+  }
+
+  updateEmployee() {
+
+    this.employeeService.updateEmployee(this.editingEmployee._id, this.editForm).subscribe({
+
+      next: (result) => {
+
+        console.log('[EMPLOYEE UPDATED]', result);
+        this.ngOnInit();
+        this.editingEmployee = null;
+        alert('Employee Updated ✔');
+      },
+
+      error: (error) => {
+
+        console.error('[ERROR UPDATING EMPLOYEE', error.message);
+        alert('ERROR: ' + error.message);
+
+      }
+    });
+  }
+
+  cancelEdit(){
+
+    this.editingEmployee = null;
   }
 
   resetForm() {
