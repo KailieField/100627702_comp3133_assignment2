@@ -1,1 +1,121 @@
-/* You can add global styles to this file, and also import other style files */
+/* -----------------------------[ GLOBAL STYLES]-----------------------------*/
+
+/* ---- global dark mode:                               */
+body {
+
+    background: #0b0b0b;
+    color: #ffffff;
+    font-family:    'Arial Narrow', sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+/* ---- making tables pop:                              */
+table {
+
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+
+}
+
+/* ---- table headers:                                  */
+th {
+
+    background-color: #1a1a1a;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+}
+
+/* ---- table cells:                                     */
+td {
+
+    padding: 10px;
+    border-top: 1px solid #101010;
+
+}
+
+.form-table {
+
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 15px;
+
+}
+
+.form-table input {
+
+    width: 75%;
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #444;
+    border-radius: 5px;
+
+}
+
+/* ---- form inputs:                                     */
+input, button {
+
+    
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;;
+}
+
+input {
+
+    background-color: #000000;
+    color: #ffffff;
+}
+
+button {
+
+    background-color: #131314;
+    border-color: aliceblue;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+button:hover {
+
+    background-color: aquamarine;
+
+}
+
+/* ---- heading styles                                   */
+h1, h2, h3 {
+
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+/* ---- centering forms:                                  */
+form {
+
+    width: 50%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* ---- error loading msg:                                 */
+div {
+
+    text-align: center;
+    margin-top: 20px;
+}
