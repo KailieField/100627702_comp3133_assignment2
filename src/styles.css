@@ -5,7 +5,7 @@ body {
 
     background: #0b0b0b;
     color: #ffffff;
-    font-family:    'Arial Narrow', sans-serif;
+    font-family: 'Trebuchet MS', sans-serif;
     margin: 0;
     padding: 0;
 
@@ -62,14 +62,22 @@ td {
 
 }
 
+.form-table input:hover {
+
+    border-color: #888;
+    box-shadow: 0 0 5px #888;
+    transition: all 0.3s ease-in-out;
+
+}
+
 /* ---- form inputs:                                     */
 input, button {
 
-    
     padding: 10px;
     margin: 5px;
     border: none;
-    border-radius: 5px;;
+    border-radius: 5px;
+
 }
 
 input {
@@ -81,16 +89,22 @@ input {
 button {
 
     background-color: #131314;
-    border-color: aliceblue;
+    border-color: 1px solid #444;
     color: #ffffff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    /* border: 1px solid transparent */ /* <---- to make sure no layout jump happens */
+    /* /* padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(0,0,0,0); */
 
 }
 
 button:hover {
 
-    background-color: aquamarine;
+    background-color: #1f1f1f;
+    border: 1px solid aquamarine;
+    color: aquamarine; 
 
 }
 
@@ -107,15 +121,15 @@ form {
 
     width: 50%;
     margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
 }
 
 /* ---- error loading msg:                                 */
-div {
+.message, .loading, .error {
 
     text-align: center;
     margin-top: 20px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

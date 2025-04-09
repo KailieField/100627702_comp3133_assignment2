@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
 
@@ -18,7 +20,7 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor( private authService: AuthService) {}
+  constructor( private authService: AuthService, private router: Router) {}
 
     onLogin() {
       this.authService.authenticateUser(this.username, this.password).subscribe({
@@ -30,8 +32,9 @@ export class LoginComponent {
           const token = result.data.login;
           localStorage.setItem('token', token);
 
-          //**** mental note: nav to go here
-
+          //---- Redirect -- route to Employees
+          alert('LOGGED IN ✔');
+          this.router.navigate(['/employees']);
         },
 
         error: (error) => {
