@@ -19,6 +19,9 @@ mongoose.connect(DB_CONNECT)
 .then(() => console.log('--- MONGODB CONNECTED ---'))
 .catch((error) => console.error(error.message))
 
+app.get('/', (req, res) => {
+    res.send('--- Server is running. Use /graphql');
+})
 //--- GRAPHQL ROUTE ---
 app.use('/graphql', 
     
