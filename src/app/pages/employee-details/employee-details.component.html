@@ -1,16 +1,20 @@
-<h2> EMPLOYEE DETAILS </h2>
+<div *ngIf="employee" class="employee-details-container">
 
-<div *ngIf="loading">Loading Employee Details...</div>
-<div *ngIf="error"> {{ error }} </div>
+    <h2> EMPLOYEE DETAILS </h2>
 
 
-<div *ngIf="employee">
-
+    <div class="employee-card">
     <p><strong>First Name : </strong> {{ employee.first_name }} </p>
     <p><strong>Last Name: </strong> {{ employee.last_name }} </p>
-    <p><strong>Email: </strong> {{ employee.email }} </p>
+    <p><strong>Email: </strong> {{ employee.email || 'N/A' }} </p>
     <p><strong>Designation: </strong> {{ employee.designation }} </p>
     <p><strong>Department: </strong> {{ employee.department }} </p>
-    <p><strong>Salary: </strong> {{ employee.salary }}</p>
-    
+    <p><strong>Salary: </strong> {{ employee.salary | currency:'CAD':'symbol':'1.0-0' }}</p>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <button (click)="goBack()" class="back-button">Back</button>
+    </div>
 </div>
+
+<div *ngIf="loading">Loading Employee Details...</div>
+<div *ngIf="error">{{ error }}</div>

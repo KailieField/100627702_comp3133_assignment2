@@ -1,0 +1,71 @@
+
+h2 {
+
+    text-align: center;
+    margin-bottom: 30px;
+
+}
+
+.employee-card {
+
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 30px auto;
+    margin-top: 100px;
+    box-shadow: 0 0 12px rgba(255,255,255,0.15);
+    color: #ffffff;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    text-align: left;
+    animation: fadeIn 0.8s ease-in-out;
+
+}
+
+.employee-details-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.employee-card:hover {
+
+    box-shadow: 0 0 20px rgba(0, 255, 170, 0.5);
+    transform: translateY(-5px);
+
+}
+
+.employee-card p {
+
+    margin: 15px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.back-button {
+
+    padding: 10px 20px;
+    background-color: #131313;
+    border: 1px solid #00ffa8;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.back-button:hover {
+
+    background-color: #00ffa8;;
+    color: #000;
+    transform: scale(1.05);
+}

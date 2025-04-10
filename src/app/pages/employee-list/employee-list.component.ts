@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 
 @Component({
@@ -38,7 +38,7 @@ export class EmployeeListComponent {
   editingEmployee: any = null;
   editForm: any = { };
 
-  constructor( private employeeService: EmployeeService ) { }
+  constructor( private employeeService: EmployeeService, private router: Router ) { }
 
   ngOnInit() {
 
@@ -174,6 +174,11 @@ export class EmployeeListComponent {
   cancelEdit(){
 
     this.editingEmployee = null;
+  }
+
+  viewEmployee(id: string) {
+    
+    this.router.navigate(['/employee', id]);
   }
 
 }

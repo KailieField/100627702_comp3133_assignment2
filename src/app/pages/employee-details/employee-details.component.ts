@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 
+import { Router } from '@angular/router';
+
 
 const GET_EMPLOYEE_BY_ID = gql`
 
@@ -39,7 +41,16 @@ export class EmployeeDetailsComponent {
   loading =  true;
   error =  '';
 
-  constructor( private route: ActivatedRoute, private apollo: Apollo ){ }
+  constructor( 
+    private route: ActivatedRoute, 
+    private apollo: Apollo ,
+    private router: Router
+
+  ) { }
+
+  goBack(){
+    this.router.navigate(['/employees']);
+  }
 
     ngOnInit(){
 
