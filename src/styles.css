@@ -65,7 +65,7 @@ td {
 .form-table input:hover {
 
     border-color: #888;
-    box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 8px aquamarine;
     transition: all 0.3s ease-in-out;
 
 }

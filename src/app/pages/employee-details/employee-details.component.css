@@ -48,6 +48,16 @@ h2 {
     margin: 15px 0;
     font-size: 18px;
     text-align: left;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.employee-card p strong {
+    min-width: 150px;
+    font-weight: 600;
+    color: aquamarine;
 }
 
 .back-button {
