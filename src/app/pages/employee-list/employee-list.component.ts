@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
 
@@ -38,7 +39,7 @@ export class EmployeeListComponent {
   editingEmployee: any = null;
   editForm: any = { };
 
-  constructor( private employeeService: EmployeeService, private router: Router ) { }
+  constructor( private employeeService: EmployeeService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
 
@@ -58,6 +59,14 @@ export class EmployeeListComponent {
       }
 
     });
+  }
+
+  showAddEmployeeForm: boolean = false;
+
+  toggleAddEmployeeForm() {
+
+    this.showAddEmployeeForm= !this.showAddEmployeeForm;
+    
   }
 
   addEmployee() {
@@ -181,63 +190,11 @@ export class EmployeeListComponent {
     this.router.navigate(['/employee', id]);
   }
 
+  logout() {
+
+    this.authService.logout();
+    alert('[LOGGED OUT ✔️]');
+    this.router.navigate(['/login']);
+  }
 }
 
-
-
-// ------------------------------------------------------ [ DEPRECATED CODE ]------------------------------------------------------
-
-// import { AuthService } from '../../services/auth.service';
-// import { gql, Apollo } from 'apollo-angular';
-
-
-// export class EmployeeListComponent {
-
-//   employees: any[] = [];
-//   loading: boolean = true;
-//   error: string = '';
-
-//   constructor( private apollo: Apollo ) { }
-
-
-//   ngOnInit(){
-
-//     this.apollo.watchQuery<any>({
-
-//       query: GET_ALL_EMPLOYEES
-
-//     }).valueChanges.subscribe({
-
-//       next: (result) => {
-
-//         this.employees = result.data.getAllEmployees;
-//         this.loading = false;
-
-//       },
-
-//       error: (error) => {
-        
-//         this.error = error.message;
-//         this.loading = false;
-
-//       }
-//     });
-//   }
-
-// }
-
-
-
-// const GET_ALL_EMPLOYEES = gql`
-
-//   query {
-//     getAllEmployees {
-//       _id
-//       first_name
-//       last_name
-//       designation
-//       department
-//       salary
-//     }
-//   }
-// `;

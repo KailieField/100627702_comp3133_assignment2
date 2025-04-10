@@ -1,42 +1,49 @@
 <!-- [ ADD EMPLOYEE ] -->
  <br>
- <h1> Add New Employee </h1>
+ <h1> EMPLOYEE LIST </h1>
 
- <form (ngSubmit)="addEmployee()" #addEmployeeForm="ngForm">
-    <table class="form-table">
-        <tr>
-            <td>FIRST <input type="text" placeholder="first name" [(ngModel)]="newEmployee.first_name" name="first_name" required></td>
-            <td>LAST<input type="text" placeholder="last name" [(ngModel)]="newEmployee.last_name" name="last_name" required></td>
-        </tr>
-        <tr>
-            <td>EMAIL <input type="email" placeholder="email" [(ngModel)]="newEmployee.email" name="email" required></td>
-            <td>GENDER: <input type="text" placeholder="gender" [(ngModel)]="newEmployee.gender" name="gender"></td>
-        </tr>
-        <tr>
-            <td>DESIGNATION<input type="text" placeholder="Designation" [(ngModel)]="newEmployee.designation" name="designation" required></td>
-            <td>DEPARTMENT<input type="text" placeholder="Department" [(ngModel)]="newEmployee.department" name="department" requried></td>
-        </tr>
-        <tr>
-            <td>SALARY <input type="number" placeholder="Salary" [(ngModel)]="newEmployee.salary" name="salary" required></td>
-            <td>DATE <input type="text" placeholder="Date of Joining" [(ngModel)]="newEmployee.date_of_joining" name="date_of_joining" required></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="text" placeholder="Employee Photo URL" [(ngModel)]="newEmployee.employee_photo" name="employee_photo"></td>
-        </tr>
-        <tr>
-            <td colspan="2" style="text-align: center;">
-            <button type="submit">➕</button>
-            </td>
-        </tr>
-    </table>
- </form>
+ <button (click)="toggleAddEmployeeForm()" class="toggle-button">
+    {{ showAddEmployeeForm ? 'Cancel' : ' ADD Employee ➕' }}
+ </button>
+
+ <div *ngIf="showAddEmployeeForm">
+    <form (ngSubmit)="addEmployee()" #addEmployeeForm="ngForm">
+        <table class="form-table">
+            <tr>
+                <td>FIRST <input type="text" placeholder="first name" [(ngModel)]="newEmployee.first_name" name="first_name" required></td>
+                <td>LAST<input type="text" placeholder="last name" [(ngModel)]="newEmployee.last_name" name="last_name" required></td>
+            </tr>
+            <tr>
+                <td>EMAIL <input type="email" placeholder="email" [(ngModel)]="newEmployee.email" name="email" required></td>
+                <td>GENDER: <input type="text" placeholder="gender" [(ngModel)]="newEmployee.gender" name="gender"></td>
+            </tr>
+            <tr>
+                <td>DESIGNATION<input type="text" placeholder="Designation" [(ngModel)]="newEmployee.designation" name="designation" required></td>
+                <td>DEPARTMENT<input type="text" placeholder="Department" [(ngModel)]="newEmployee.department" name="department" requried></td>
+            </tr>
+            <tr>
+                <td>SALARY <input type="number" placeholder="Salary" [(ngModel)]="newEmployee.salary" name="salary" required></td>
+                <td>DATE <input type="text" placeholder="Date of Joining" [(ngModel)]="newEmployee.date_of_joining" name="date_of_joining" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="text" placeholder="Employee Photo URL" [(ngModel)]="newEmployee.employee_photo" name="employee_photo"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                <button type="submit">➕</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 
 <br><br><br>
 
+
+<!--[ EMPLOYEE LIST ]-->
 <div *ngIf="loading">Loading Employee List...</div>
 <div *ngIf="error"> {{ error }} </div>
 
-<h1> EMPLOYEE LIST </h1>
 <table class="employee-table th">
     <thead>
         <tr>
@@ -59,6 +66,7 @@
             </td>
         </tr>
     </tbody>
+    <button (click)="logout()">Logout</button>
 </table>
 
 <div *ngIf="editingEmployee">
@@ -74,7 +82,3 @@
         <button type="button" (click)="cancelEdit()">Cancel</button>
     </form>
 </div>
-
-<!-- 
---- Currently Hardcoding Employees
------- consider dynamically populating employees from into table from employee-list.component.ts-->

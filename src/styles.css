@@ -89,14 +89,13 @@ input {
 button {
 
     background-color: #131314;
-    border-color: 1px solid #444;
     color: #ffffff;
     cursor: pointer;
-    /* border: 1px solid transparent */ /* <---- to make sure no layout jump happens */
-    /* /* padding: 10px 20px;
-    border-radius: 5px;
+    border: 1px solid transparent; /* <---- to make sure no layout jump happens */
+    padding: 10px 20px;
+    border-radius: 5px; 
     transition: all 0.3s ease;
-    box-shadow: 0 0 5px rgba(0,0,0,0); */
+    box-shadow: 0 0 5px rgba(0,0,0,0); 
 
 }
 
@@ -105,6 +104,7 @@ button:hover {
     background-color: #1f1f1f;
     border: 1px solid aquamarine;
     color: aquamarine; 
+    box-shadow: 0 0 8px aquamarine;
 
 }
 
