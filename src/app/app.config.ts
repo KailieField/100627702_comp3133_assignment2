@@ -12,7 +12,7 @@ import { routes } from './app.routes';
 
 const apolloClientOptions: ApolloClientOptions<any> = {
 
-  uri: 'https//100627702-comp3133-assignment2-50sv.vercel.app/graphql',
+  uri: 'https://100627702-comp3133-assignment2-50sv.vercel.app/graphql',
   cache: new InMemoryCache(),
 
 };
