@@ -1,29 +1,27 @@
 <!-- [ ADD EMPLOYEE ] -->
- <br>
- <h1> EMPLOYEE LIST </h1>
-
  <button (click)="toggleAddEmployeeForm()" class="toggle-button">
     {{ showAddEmployeeForm ? 'Cancel' : ' ADD Employee ➕' }}
  </button>
 
  <div *ngIf="showAddEmployeeForm">
+    <h2>Add New Employee</h2>
     <form (ngSubmit)="addEmployee()" #addEmployeeForm="ngForm">
         <table class="form-table">
             <tr>
-                <td>FIRST <input type="text" placeholder="first name" [(ngModel)]="newEmployee.first_name" name="first_name" required></td>
-                <td>LAST<input type="text" placeholder="last name" [(ngModel)]="newEmployee.last_name" name="last_name" required></td>
+                <td><input type="text" placeholder="first name" [(ngModel)]="newEmployee.first_name" name="first_name" required></td>
+                <td><input type="text" placeholder="last name" [(ngModel)]="newEmployee.last_name" name="last_name" required></td>
             </tr>
             <tr>
-                <td>EMAIL <input type="email" placeholder="email" [(ngModel)]="newEmployee.email" name="email" required></td>
-                <td>GENDER: <input type="text" placeholder="gender" [(ngModel)]="newEmployee.gender" name="gender"></td>
+                <td><input type="email" placeholder="email" [(ngModel)]="newEmployee.email" name="email" required></td>
+                <td><input type="text" placeholder="gender" [(ngModel)]="newEmployee.gender" name="gender"></td>
             </tr>
             <tr>
-                <td>DESIGNATION<input type="text" placeholder="Designation" [(ngModel)]="newEmployee.designation" name="designation" required></td>
-                <td>DEPARTMENT<input type="text" placeholder="Department" [(ngModel)]="newEmployee.department" name="department" requried></td>
+                <td><input type="text" placeholder="Designation" [(ngModel)]="newEmployee.designation" name="designation" required></td>
+                <td><input type="text" placeholder="Department" [(ngModel)]="newEmployee.department" name="department" requried></td>
             </tr>
             <tr>
-                <td>SALARY <input type="number" placeholder="Salary" [(ngModel)]="newEmployee.salary" name="salary" required></td>
-                <td>DATE <input type="text" placeholder="Date of Joining" [(ngModel)]="newEmployee.date_of_joining" name="date_of_joining" required></td>
+                <td><input type="number" placeholder="Salary" [(ngModel)]="newEmployee.salary" name="salary" required></td>
+                <td><input type="text" placeholder="Date of Joining" [(ngModel)]="newEmployee.date_of_joining" name="date_of_joining" required></td>
             </tr>
             <tr>
                 <td colspan="2"><input type="text" placeholder="Employee Photo URL" [(ngModel)]="newEmployee.employee_photo" name="employee_photo"></td>
@@ -41,35 +39,62 @@
 
 
 <!--[ EMPLOYEE LIST ]-->
-<div *ngIf="loading">Loading Employee List...</div>
-<div *ngIf="error"> {{ error }} </div>
+<h1> EMPLOYEE LIST </h1>
 
 <table class="employee-table th">
     <thead>
         <tr>
-            <th> First Name </th>
-            <th> Last Name </th>
-            <th> Designation </th>
-            <th> Department </th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Designation</th>
+            <th>Department</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let employee of employees">
-            <td>{{ employee.first_name }}</td>
-            <td>{{ employee.last_name }}</td>
-            <td>{{ employee.designation }}</td>
-            <td>{{ employee.department }}</td>
-            <td>
-                <button type="button" (click)="viewEmployee(employee._id)">View</button>
-                <button type="button" (click)="editEmployee(employee)">Edit</button>
-                <button type="button" (click)="deleteEmployee(employee._id)">Delete</button>
-            </td>
+
+            <!--  first name -->
+        <td *ngIf="editingEmployee !== employee._id">{{ employee.first_name}}</td>
+        <td *ngIf="editingEmployee === employee._id">
+            <input type="text" [(ngModel)]="editForm.first_name" name="edit_first_name" [ngModelOptions]="{ standalone: true }" required>
+        </td>
+            <!-- last name -->
+        <td *ngIf="editingEmployee !== employee._id">{{ employee.last_name}}</td>
+        <td *ngIf="editingEmployee === employee._id">
+            <input type="text" [(ngModel)]="editForm.last_name" name="edit_last_name" [ngModelOptions]="{ standalone: true }" required>
+        </td>
+             <!-- designation -->
+        <td *ngIf="editingEmployee !== employee._id">{{ employee.designation}}</td>
+        <td *ngIf="editingEmployee === employee._id">
+            <input type="text" [(ngModel)]="editForm.designation" name="edit_designation" [ngModelOptions]="{ standalone: true }" required>
+        </td>
+            <!-- department -->
+        <td *ngIf="editingEmployee !== employee._id">{{ employee.department}}</td>
+        <td *ngIf="editingEmployee === employee._id">
+            <input type="text" [(ngModel)]="editForm.department" name="edit_department" [ngModelOptions]="{ standalone: true }" required>
+        </td>
+
+            <!-- action buttons -->
+        <td>
+            <div style="display: flex; gap: 5px; justify-content: center;">
+            <button *ngIf="editingEmployee !== employee._id" (click)="editEmployee(employee)">Edit</button>
+            <button *ngIf="editingEmployee === employee._id" (click)="updateEmployee()">Save</button>
+            <button *ngIf="editingEmployee === employee._id" (click)="cancelEdit()">Cancel</button>
+            <button (click)="viewEmployee(employee._id)">View</button>
+            <button (click)="deleteEmployee(employee._id)">Delete</button>
+        </div>
+        </td>
+
         </tr>
     </tbody>
-    <button (click)="logout()">Logout</button>
 </table>
 
-<div *ngIf="editingEmployee">
+    <div style="margin: 20px;">
+    <button (click)="logout()">Logout</button>
+    <button (click)="refreshPage()" style="margin: 20px">Refresh</button>
+    </div>
+
+<!-- <div *ngIf="editingEmployee">
     <h3>Edit Employee</h3>
     <form (ngSubmit)="updateEmployee()">
         <input type="text" [(ngModel)]="editForm.first_name" name="edit_first_name" [ngModelOptions]="{ standalone: true }" required>
@@ -81,4 +106,4 @@
         <button type="submit">Save Changes</button>
         <button type="button" (click)="cancelEdit()">Cancel</button>
     </form>
-</div>
+</div> -->

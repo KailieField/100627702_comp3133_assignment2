@@ -36,7 +36,7 @@ export class EmployeeListComponent {
 
   };
 
-  editingEmployee: any = null;
+  editingEmployee: string | null = null;
   editForm: any = { };
 
   constructor( private employeeService: EmployeeService, private authService: AuthService, private router: Router) { }
@@ -66,7 +66,7 @@ export class EmployeeListComponent {
   toggleAddEmployeeForm() {
 
     this.showAddEmployeeForm= !this.showAddEmployeeForm;
-    
+
   }
 
   addEmployee() {
@@ -82,7 +82,9 @@ export class EmployeeListComponent {
 
       next: (result) => {
         console.log('[ EMPLOYEE ADDED]', result);
+
         this.ngOnInit(); //<--- this is supposed to re-fetch the employee list but something is misfiring
+
         this.resetForm(); //<--- Clear form inputs
         alert('EMPLOYEE ADDED ✔');
       },
@@ -133,51 +135,49 @@ export class EmployeeListComponent {
     });
   }
 
+
   editEmployee(employee: any) {
 
-    this.editingEmployee = employee;
+    this.editingEmployee = employee._id;
+
     this.editForm = { 
+
       first_name: employee.first_name,
       last_name: employee.last_name,
-      email: employee.email || '',
-      gender: employee.gender || '',
       designation: employee.designation,
-      salary: employee.salary,
-      date_of_joining: employee.date_of_joining || new Date().toISOString().slice(0, 10),
       department: employee.department,
-      employee_photo: employee.employee_photo || ''
+      salary: employee.salary
       
     };
 
   }
 
-  updateEmployee() {
+updateEmployee() {
 
-    if (!this.editingEmployee) {
-      console.error('Employee not selected...');
-      return;
-    }
-
-    this.employeeService.updateEmployee(this.editingEmployee._id, this.editForm).subscribe({
-
-      next: (result) => {
-
-        console.log('[EMPLOYEE UPDATED]', result);
-
-        this.ngOnInit();
-        this.editingEmployee = null;
-        this.editForm = { };
-        alert('Employee Updated ✔');
-      },
-
-      error: (error) => {
-
-        console.error('[ERROR UPDATING EMPLOYEE', error.message);
-        alert('ERROR: ' + error.message);
-
-      }
-    });
+  if (!this.editingEmployee) {
+    console.error('Select Employee to edit first.');
+    return;
   }
+  
+  this.employeeService.updateEmployee(this.editingEmployee, this.editForm).subscribe({
+
+    next: (result)=> {
+
+      console.log('[EMPLOYEE UPDATED]', result);
+
+      this.ngOnInit();
+
+      this.editingEmployee = null;
+      this.editForm = { };
+      alert('Employee Updated ✔️ >> Refresh Page!');
+    },
+
+    error: (error) => {
+      console.error('[ERROR UPDATING EMPLOYEE]', error.message);
+      alert('ERROR: ' + error.message);
+    }
+  });
+}
 
 
   cancelEdit(){
@@ -195,6 +195,10 @@ export class EmployeeListComponent {
     this.authService.logout();
     alert('[LOGGED OUT ✔️]');
     this.router.navigate(['/login']);
+  }
+
+  refreshPage() {
+    window.location.reload();
   }
 }
 
